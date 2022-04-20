@@ -39,5 +39,6 @@ public:
 	Text* getTextScore();
 	Text* getTextMessage();
 	Timer* getTimer();
+	Font* getFont();
 };
 

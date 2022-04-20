@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "TextureList.h"
 #include "SoundManager.h"
+#include "SceneManager.h"
 
 void EventHandler::InputKeyEvent()
 {
@@ -40,6 +41,15 @@ void EventHandler::InputKeyEvent()
 				break;
 			case Keyboard::Right:
 				PlayerMoveEvent(side::RIGHT);
+				break;
+			case Keyboard::Down:
+				SceneManager::GetInstance()->KeyboardEvent(Keyboard::Down);
+				break;
+			case Keyboard::Up:
+				SceneManager::GetInstance()->KeyboardEvent(Keyboard::Up);
+				break;
+			case Keyboard::Space:
+				SceneManager::GetInstance()->KeyboardEvent(Keyboard::Space);
 				break;
 			default:
 				break;

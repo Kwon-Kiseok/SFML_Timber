@@ -34,6 +34,7 @@ public:
 
 	void init();
 	void update();
+	void Render();
 	void clean();
 
 	void resetTimer();

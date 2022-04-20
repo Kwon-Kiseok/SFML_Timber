@@ -5,6 +5,7 @@
 #include "Timer.h"
 #include "Player.h"
 #include "SoundManager.h"
+#include "SceneManager.h"
 
 Game* Game::instance = nullptr;
 
@@ -21,8 +22,13 @@ Game* Game::GetInstance()
 void Game::init()
 {
 	setWindow();
+
 	TextureLoad();
 	UILoad();
+
+	SceneManager::GetInstance()->LoadScene(SCENE_TYPE::MENU_SCENE);
+	SceneManager::GetInstance()->InitScene();
+
 	CreatePlayer();
 	SoundLoad();
 }
@@ -32,10 +38,10 @@ void Game::update()
 	while (window->isOpen())
 	{
 		eventHandler->InputKeyEvent();
-
+		SceneManager::GetInstance()->UpdateScene();
 		// 업데이트
 		resetTimer();
-
+		
 		if (!isPause)
 		{
 			tl->update(gen, timer->GetInstance()->getTime());
@@ -43,13 +49,7 @@ void Game::update()
 			eventHandler->DeathEvent(player->getDir());
 		}
 
-		// 렌더
-		window->clear();
-		tl->draw(window);
-		player->draw(window);
-		ui->GetInstance()->draw(window);
-		// 윈도우 출력
-		window->display();
+		Render();
 	}
 }
 
@@ -68,6 +68,18 @@ void Game::clean()
 	rd = nullptr;
 	tl = nullptr;
 	eventHandler = nullptr;
+}
+
+void Game::Render()
+{
+	// 렌더
+	window->clear();
+	SceneManager::GetInstance()->DrawScene(window);
+	tl->draw(window);
+	player->draw(window);
+	ui->GetInstance()->draw(window);
+	// 윈도우 출력
+	window->display();
 }
 
 void Game::setWindow()

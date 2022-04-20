@@ -5,6 +5,7 @@
 #include "Game.h"
 #include "Player.h"
 #include "SoundManager.h"
+#include "SceneManager.h"
 
 UI* UI::instance = nullptr;
 
@@ -65,7 +66,6 @@ void UI::init()
 	setTextRect();
 
 	textMessage->setPosition(1920 * 0.5f, 1080 * 0.5f);
-
 
 }
 
@@ -135,4 +135,9 @@ void UI::draw(RenderWindow* window)
 Timer* UI::getTimer()
 {
 	return timer->GetInstance();
+}
+
+Font* UI::getFont()
+{
+	return fontKOMIKAPP;
 }
