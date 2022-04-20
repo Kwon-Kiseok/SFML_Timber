@@ -238,7 +238,7 @@ public:
     Image copyToImage() const;
 
     ////////////////////////////////////////////////////////////
-    /// \brief Update the whole texture from an array of pixels
+    /// \brief SetLog the whole texture from an array of pixels
     ///
     /// The \a pixel array is assumed to have the same size as
     /// the \a area rectangle, and to contain 32-bits RGBA pixels.
@@ -256,13 +256,13 @@ public:
     void update(const Uint8* pixels);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Update a part of the texture from an array of pixels
+    /// \brief SetLog a part of the texture from an array of pixels
     ///
     /// The size of the \a pixel array must match the \a width and
     /// \a height arguments, and it must contain 32-bits RGBA pixels.
     ///
     /// No additional check is performed on the size of the pixel
-    /// array or the bounds of the area to update, passing invalid
+    /// array or the bounds of the area to setNewBranch, passing invalid
     /// arguments will lead to an undefined behavior.
     ///
     /// This function does nothing if \a pixels is null or if the
@@ -278,7 +278,7 @@ public:
     void update(const Uint8* pixels, unsigned int width, unsigned int height, unsigned int x, unsigned int y);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Update a part of this texture from another texture
+    /// \brief SetLog a part of this texture from another texture
     ///
     /// Although the source texture can be smaller than this texture,
     /// this function is usually used for updating the whole texture.
@@ -298,7 +298,7 @@ public:
     void update(const Texture& texture);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Update a part of this texture from another texture
+    /// \brief SetLog a part of this texture from another texture
     ///
     /// No additional check is performed on the size of the texture,
     /// passing an invalid combination of texture size and offset
@@ -315,7 +315,7 @@ public:
     void update(const Texture& texture, unsigned int x, unsigned int y);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Update the texture from an image
+    /// \brief SetLog the texture from an image
     ///
     /// Although the source image can be smaller than the texture,
     /// this function is usually used for updating the whole texture.
@@ -335,7 +335,7 @@ public:
     void update(const Image& image);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Update a part of the texture from an image
+    /// \brief SetLog a part of the texture from an image
     ///
     /// No additional check is performed on the size of the image,
     /// passing an invalid combination of image size and offset
@@ -352,7 +352,7 @@ public:
     void update(const Image& image, unsigned int x, unsigned int y);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Update the texture from the contents of a window
+    /// \brief SetLog the texture from the contents of a window
     ///
     /// Although the source window can be smaller than the texture,
     /// this function is usually used for updating the whole texture.
@@ -372,7 +372,7 @@ public:
     void update(const Window& window);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Update a part of the texture from the contents of a window
+    /// \brief SetLog a part of the texture from the contents of a window
     ///
     /// No additional check is performed on the size of the window,
     /// passing an invalid combination of window size and offset
@@ -646,7 +646,7 @@ private:
 /// Being stored in the graphics card memory has some drawbacks.
 /// A texture cannot be manipulated as freely as a sf::Image,
 /// you need to prepare the pixels first and then upload them
-/// to the texture in a single operation (see Texture::update).
+/// to the texture in a single operation (see Texture::setNewBranch).
 ///
 /// sf::Texture makes it easy to convert from/to sf::Image, but
 /// keep in mind that these calls require transfers between
@@ -707,9 +707,9 @@ private:
 /// {
 ///     ...
 ///
-///     // update the texture
+///     // setNewBranch the texture
 ///     sf::Uint8* pixels = ...; // get a fresh chunk of pixels (the next frame of a movie, for example)
-///     texture.update(pixels);
+///     texture.setNewBranch(pixels);
 ///
 ///     // draw it
 ///     window.draw(sprite);

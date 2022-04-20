@@ -201,13 +201,13 @@ private:
     virtual void draw(RenderTarget& target, RenderStates states) const;
 
     ////////////////////////////////////////////////////////////
-    /// \brief Update the vertices' positions
+    /// \brief SetLog the vertices' positions
     ///
     ////////////////////////////////////////////////////////////
     void updatePositions();
 
     ////////////////////////////////////////////////////////////
-    /// \brief Update the vertices' texture coordinates
+    /// \brief SetLog the vertices' texture coordinates
     ///
     ////////////////////////////////////////////////////////////
     void updateTexCoords();
