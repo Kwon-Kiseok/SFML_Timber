@@ -1,5 +1,6 @@
 #include "MenuScene.h"
 #include "SceneManager.h"
+#include "UI.h"
 
 MenuScene::MenuScene()
 	: CursorY(0)
@@ -9,6 +10,8 @@ MenuScene::MenuScene()
 	textPlay = new Text();
 	textureCursor = new Texture();
 	spriteCursor = new Sprite();
+
+	InitScene();
 }
 
 MenuScene::~MenuScene()
@@ -43,7 +46,7 @@ void MenuScene::DrawScene(RenderWindow* window)
 	window->draw(*textPlay);
 }
 
-void MenuScene::SetFont(Font font)
+void MenuScene::SetFont(Font& font)
 {
 	textGameMode->setFont(font);
 	textCharacterSelect->setFont(font);

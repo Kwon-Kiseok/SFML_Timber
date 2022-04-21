@@ -13,6 +13,6 @@ public:
 	void setSpeed(float spd);
 	float getSpeed();
 	bool getActive();
-	void Update(mt19937* gen, Time dt);
+	void Update(mt19937 gen, Time dt);
 };
 

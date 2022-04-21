@@ -1,6 +1,5 @@
 #pragma once
 #include "Scene.h"
-#include "UI.h"
 
 class MenuScene : public Scene
 {
@@ -8,7 +7,7 @@ private:
 	Text* textGameMode;
 	Text* textCharacterSelect;
 	Text* textPlay;
-
+	
 	Texture* textureCursor;
 	Sprite* spriteCursor;
 
@@ -24,7 +23,7 @@ public:
 	virtual void DrawScene(RenderWindow* window);
 	virtual void KeyboardEvent(Keyboard::Key key);
 
-	void SetFont(Font font);
+	void SetFont(Font& font);
 	void SetString();
 	void SetCursor();
 	void SetIsPlay(bool is);

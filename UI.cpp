@@ -16,10 +16,7 @@ UI::UI()
 	textMessage = nullptr;
 	timerBar_width = 0;
 	timerBar_height = 0;
-	timer = nullptr;
 	timerBarWidthPerSecond = 0;
-	game = nullptr;
-	soundManager = nullptr;
 }
 
 UI::~UI()
@@ -88,8 +85,8 @@ void UI::initTimerBar()
 	timerBar.setPosition(timerPos);
 	timerBar.setFillColor(Color::Red);
 
-	getTimer()->setTimeMax(6.0f);
-	timerBarWidthPerSecond = timerBar_width / getTimer()->getTimeMax();
+	Timer::GetInstance()->setTimeMax(6.0f);
+	timerBarWidthPerSecond = timerBar_width / Timer::GetInstance()->getTimeMax();
 }
 
 Text* UI::getTextScore()
@@ -105,36 +102,31 @@ Text* UI::getTextMessage()
 void UI::update()
 {
 	stringstream ss;
-	ss << "Score = " << game->GetInstance()->GetPlayer()->GetScore();
+	ss << "Score = " << Game::GetInstance()->GetPlayer()->GetScore();
 	textScore->setString(ss.str());
 
-	getTimer()->setRemaining(-1 * (getTimer()->getTime().asSeconds()));
-	timerBarSize.x = getTimer()->getRemaining() * timerBarWidthPerSecond;
+	Timer::GetInstance()->setRemaining(-1 * (Timer::GetInstance()->getTime().asSeconds()));
+	timerBarSize.x = Timer::GetInstance()->getRemaining() * timerBarWidthPerSecond;
 	timerBar.setSize(timerBarSize);
 
-	if (getTimer()->getRemaining() < 0.f)
+	if (Timer::GetInstance()->getRemaining() < 0.f)
 	{
 		timerBarSize.x = 0.f;
 		timerBar.setSize(timerBarSize);
-		game->GetInstance()->SetPause(true);
+		Game::GetInstance()->SetPause(true);
 		textMessage->setString("Out of Time!!");
 
 		setTextRect();
-		soundManager->GetInstance()->ootSound->play();
+		SoundManager::GetInstance()->ootSound->play();
 	}
 }
 
 void UI::draw(RenderWindow* window)
 {
 	window->draw(*textScore);
-	if (game->GetInstance()->GetPause())
+	if (Game::GetInstance()->GetPause())
 		window->draw(*textMessage);
 	window->draw(timerBar);
-}
-
-Timer* UI::getTimer()
-{
-	return timer->GetInstance();
 }
 
 Font* UI::getFont()

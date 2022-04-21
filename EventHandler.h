@@ -21,8 +21,5 @@ public:
 	EventHandler(RenderWindow* window) : window(window), acceptInput(false)
 	, timer(nullptr), game(nullptr), player(nullptr), ui(nullptr), soundManager(nullptr) {}
 	void InputKeyEvent();
-	void RestartEvent();
-	void PlayerMoveEvent(side side);
-	void DeathEvent(side playerSide);
 };
 

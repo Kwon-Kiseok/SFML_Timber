@@ -1,5 +1,7 @@
 #include "SceneManager.h"
 #include "MenuScene.h"
+#include "PlayScene.h"
+#include "CharacterSelectScene.h"
 
 SceneManager* SceneManager::instance = nullptr;
 
@@ -24,11 +26,31 @@ void SceneManager::LoadScene(SCENE_TYPE type)
     switch (sceneType)
     {
     case SCENE_TYPE::MENU_SCENE:
+    {
+        if (scene != nullptr)
+        {
+            delete scene;
+        }
         scene = new MenuScene();
+    }
         break;
     case SCENE_TYPE::SELECT_SCENE:
+    {
+        if (scene != nullptr)
+        {
+            delete scene;
+        }
+        scene = new CharacterSelectScene();
+    }
         break;
     case SCENE_TYPE::GAME_SCENE:
+    {
+        if (scene != nullptr)
+        {
+            delete scene;
+        }
+        scene = new PlayScene();
+    }
         break;
     default:
         break;

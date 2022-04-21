@@ -15,13 +15,13 @@ bool Cloud::getActive()
 	return isActive;
 }
 
-void Cloud::Update(mt19937* gen, Time dt)
+void Cloud::Update(mt19937 gen, Time dt)
 {
     if (!isActive)
     {
-        speed = (*gen)() % 150 + 150;
+        speed = (gen)() % 150 + 150;
         speed *= -1;
-        float y = (*gen)() % 150 + 150.f;
+        float y = (gen)() % 150 + 150.f;
         sprite.setPosition(2000, y);
         isActive = true;
     }

@@ -1,4 +1,6 @@
 #include "TextureList.h"
+#include <random>
+#include "Timer.h"
 
 TextureList::~TextureList()
 {
@@ -64,8 +66,12 @@ void TextureList::draw(RenderWindow* window)
 	window->draw(treeLog->getSprite());
 }
 
-void TextureList::update(mt19937* gen, Time dt)
+void TextureList::update()
 {
+	random_device rd;
+	mt19937 gen(rd());
+	Time dt = Timer::GetInstance()->getTime();
+
 	bee->Update(gen, dt);
 
 	for (int i = 0; i < 3; ++i)

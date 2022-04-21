@@ -21,7 +21,7 @@ public:
 	~TextureList();
 
 	void init();
-	void update(mt19937* gen, Time dt);
+	void update();
 	void draw(RenderWindow* window);
 };
 
