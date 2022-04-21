@@ -8,8 +8,8 @@
 
 
 PlayScene::PlayScene()
-	:acceptInput(false)
 {
+	acceptInput = false;
 	InitScene();
 }
 
@@ -99,8 +99,6 @@ void PlayScene::PlayerMoveEvent(side side)
 		Game::GetInstance()->GetPlayer()->SetWeaponPos(side);
 
 	}
-
-	acceptInput = true;
 }
 
 void PlayScene::DeathEvent(side playerSide)

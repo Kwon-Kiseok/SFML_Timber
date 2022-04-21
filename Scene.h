@@ -3,6 +3,8 @@
 
 class Scene
 {
+protected:
+	bool acceptInput;
 public:
 	Scene() {}
 	virtual ~Scene() {}
@@ -11,5 +13,6 @@ public:
 	virtual void UpdateScene() = 0;
 	virtual void DrawScene(RenderWindow* window) = 0;
 	virtual void KeyboardEvent(Keyboard::Key key) = 0;
+	virtual void SetAcceptInput(bool is);
 };
 

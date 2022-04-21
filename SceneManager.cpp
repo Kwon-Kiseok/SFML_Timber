@@ -72,6 +72,11 @@ void SceneManager::KeyboardEvent(Keyboard::Key key)
     scene->KeyboardEvent(key);
 }
 
+void SceneManager::SetAcceptInput(bool is)
+{
+    scene->SetAcceptInput(is);
+}
+
 SCENE_TYPE SceneManager::getSceneType()
 {
     return sceneType;

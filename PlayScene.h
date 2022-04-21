@@ -3,8 +3,6 @@
 
 class PlayScene : public Scene
 {
-private:
-	bool acceptInput;
 public:
 	PlayScene();
 	~PlayScene();

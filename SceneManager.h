@@ -30,6 +30,7 @@ public:
 	void UpdateScene();
 	void DrawScene(RenderWindow* window);
 	void KeyboardEvent(Keyboard::Key key);
+	void SetAcceptInput(bool is);
 	SCENE_TYPE getSceneType();
 };
 

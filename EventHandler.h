@@ -11,15 +11,13 @@ class EventHandler
 {
 private:
 	RenderWindow* window;
-	bool acceptInput;
 	Timer* timer;
 	Game* game;
 	Player* player;
 	UI* ui;
 	SoundManager* soundManager;
 public:
-	EventHandler(RenderWindow* window) : window(window), acceptInput(false)
-	, timer(nullptr), game(nullptr), player(nullptr), ui(nullptr), soundManager(nullptr) {}
+	EventHandler(RenderWindow* window) : window(window), timer(nullptr), game(nullptr), player(nullptr), ui(nullptr), soundManager(nullptr) {}
 	void InputKeyEvent();
 };
 
