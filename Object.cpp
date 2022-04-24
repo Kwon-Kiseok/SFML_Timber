@@ -14,12 +14,12 @@ void Object::SetXY(float x, float y)
 	sprite.setPosition(this->x, this->y);
 }
 
-Texture Object::getTexture()
+Texture& Object::getTexture()
 {
 	return texture;
 }
 
-Sprite Object::getSprite()
+Sprite& Object::getSprite()
 {
 	return sprite;
 }

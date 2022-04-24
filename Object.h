@@ -14,8 +14,8 @@ public:
 
 	virtual void init(const char* route, float x, float y);
 	virtual void SetXY(float x, float y);
-	virtual Texture getTexture();
-	virtual Sprite getSprite();
+	virtual Texture& getTexture();
+	virtual Sprite& getSprite();
 
 };
 

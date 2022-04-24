@@ -5,6 +5,8 @@
 #include "Timer.h"
 #include "Player.h"
 #include "SoundManager.h"
+#include "SceneManager.h"
+#include <string>
 
 Game* Game::instance = nullptr;
 
@@ -21,10 +23,11 @@ Game* Game::GetInstance()
 void Game::init()
 {
 	setWindow();
+
 	TextureLoad();
 	UILoad();
-	CreatePlayer();
-	SoundLoad();
+
+	SceneManager::GetInstance()->LoadScene(SCENE_TYPE::MENU_SCENE);
 }
 
 void Game::update()
@@ -32,24 +35,9 @@ void Game::update()
 	while (window->isOpen())
 	{
 		eventHandler->InputKeyEvent();
-
-		// 업데이트
+		SceneManager::GetInstance()->UpdateScene();
 		resetTimer();
-
-		if (!isPause)
-		{
-			tl->update(gen, timer->GetInstance()->getTime());
-			ui->GetInstance()->update();
-			eventHandler->DeathEvent(player->getDir());
-		}
-
-		// 렌더
-		window->clear();
-		tl->draw(window);
-		player->draw(window);
-		ui->GetInstance()->draw(window);
-		// 윈도우 출력
-		window->display();
+		Render();
 	}
 }
 
@@ -70,6 +58,13 @@ void Game::clean()
 	eventHandler = nullptr;
 }
 
+void Game::Render()
+{
+	window->clear();
+	SceneManager::GetInstance()->DrawScene(window);
+	window->display();
+}
+
 void Game::setWindow()
 {
 	vm = new VideoMode(1920, 1080);
@@ -87,13 +82,13 @@ void Game::TextureLoad()
 
 void Game::UILoad()
 {
-	ui->GetInstance()->init();
-	ui->GetInstance()->initTimerBar();
+	UI::GetInstance()->init();
+	UI::GetInstance()->initTimerBar();
 }
 
 void Game::SoundLoad()
 {
-	soundManager->GetInstance()->init();
+	SoundManager::GetInstance()->init();
 }
 
 void Game::CreatePlayer()
@@ -102,6 +97,12 @@ void Game::CreatePlayer()
 	player->init("graphics/player.png", 580, 720);
 	player->setDir(side::LEFT);
 	player->SetWeapon();
+}
+
+void Game::ChangePlayerModel(const char* path)
+{
+	CreatePlayer();
+	player->init(path, 580, 720);
 }
 
 Player* Game::GetPlayer()
@@ -116,7 +117,7 @@ TextureList* Game::GetTL()
 
 void Game::resetTimer()
 {
-	timer->GetInstance()->setTime(&clock);
+	Timer::GetInstance()->setTime(&clock);
 }
 
 bool Game::GetPause()

@@ -16,13 +16,13 @@ bool Bee::getActive()
 	return isActive;
 }
 
-void Bee::Update(mt19937* gen, Time dt)
+void Bee::Update(mt19937 gen, Time dt)
 {
 	if (!isActive)
 	{
-		speed = (*gen)() % 200 + 200.0f;
+		speed = (gen)() % 200 + 200.0f;
 		speed *= -1.f;
-		float y = (*gen)() % 500 + 500.0f;
+		float y = (gen)() % 500 + 500.0f;
 		sprite.setPosition(2000, y);
 		isActive = true;
 	}

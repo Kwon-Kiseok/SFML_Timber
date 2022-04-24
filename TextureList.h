@@ -18,10 +18,12 @@ public:
 	Branch* branch;
 	RIP_Tombstone* tombstone;
 
+	TextureList() : bg(nullptr), cloud(nullptr), bee(nullptr), tree(nullptr), treeLog(nullptr),
+		branch(nullptr), tombstone(nullptr) {}
 	~TextureList();
 
 	void init();
-	void update(mt19937* gen, Time dt);
+	void update();
 	void draw(RenderWindow* window);
 };
 

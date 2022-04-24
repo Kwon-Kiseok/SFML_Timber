@@ -22,5 +22,6 @@ public:
 	void ResetPos(float x, float y);
 	void SetWeaponPos(side Pos);
 	void draw(RenderWindow* window);
+	void WeaponInvisible();
 };
 

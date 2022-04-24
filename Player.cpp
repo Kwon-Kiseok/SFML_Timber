@@ -80,3 +80,8 @@ void Player::draw(RenderWindow* window)
 	window->draw(sprite);
 	window->draw(weapon->getSprite());
 }
+
+void Player::WeaponInvisible()
+{
+	weapon->SetXY(3000, weapon->getSprite().getPosition().y);
+}
