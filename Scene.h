@@ -6,7 +6,7 @@ class Scene
 protected:
 	bool acceptInput;
 public:
-	Scene() {}
+	Scene() : acceptInput(false) {}
 	virtual ~Scene() {}
 
 	virtual void InitScene() = 0;

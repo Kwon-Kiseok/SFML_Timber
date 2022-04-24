@@ -2,9 +2,8 @@
 
 int main()
 {
-	Game* game = Game::GetInstance();
-	game->init();
-	game->update();
-	game->clean();
+	Game::GetInstance()->init();
+	Game::GetInstance()->update();
+	Game::GetInstance()->clean();
 	return 0;
 }
